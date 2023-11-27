@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -18,6 +18,21 @@ const Nav = () => {
   const toggleNavBar = () => {
     setIsOpen(!isOpen);
   };
+
+  // Close burger menu when window is resized beyond the mobile breakpoint
+  const handleResize = () => {
+    if (window.innerWidth >= 768) {
+      setIsOpen(false);
+    }
+  };
+
+  // Add event listener for window resize
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
