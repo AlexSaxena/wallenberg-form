@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-// import {Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react';
 
 const NavLinks = () => {
   return (
@@ -12,12 +13,28 @@ const NavLinks = () => {
 };
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavBar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="w-1/3">
-      <div className="flex justify-between">
-        <NavLinks />
+    <>
+      <div className="w-1/3 flex justify-end">
+        <div className="hidden w-full md:flex justify-between">
+          <NavLinks />
+        </div>
+        <div className="md:hidden">
+          <button onClick={toggleNavBar}>{isOpen ? <X /> : <Menu />}</button>
+        </div>
       </div>
-    </div>
+      {isOpen && (
+        <div className="flex flex-col items-center basis-full">
+          <NavLinks />
+        </div>
+      )}
+    </>
   );
 };
 
