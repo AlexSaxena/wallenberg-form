@@ -1,10 +1,10 @@
 import Header from '../components/Header';
 
-export default function ErrorPage() {
+export default function Login() {
   return (
     <>
       <Header />
-      <h2>Error 404: Not Found</h2>
+      <h2>Login Page</h2>
     </>
   );
 }
