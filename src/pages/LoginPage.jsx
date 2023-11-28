@@ -3,10 +3,11 @@ import LoginForm from '../components/LoginForm';
 
 export default function Login() {
   return (
-    <>
+    <div className="w-screen h-screen flex flex-col items-center bg-gray-200">
       <Header />
-      <h2>Login Page</h2>
-      <LoginForm />
-    </>
+      <div className="flex-grow flex items-center justify-center">
+        <LoginForm />
+      </div>
+    </div>
   );
 }
