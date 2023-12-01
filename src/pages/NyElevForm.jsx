@@ -14,11 +14,11 @@ export default function PlacesForm() {
 
   return (
     <>
+      <Header />
       <div className="bg-gray-100">
         <div className="container mx-auto p-8">
           <div className="bg-white shadow rounded-lg p-6">
             <form action="#" method="POST" className="space-y-4">
-              ----------------------------------
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Elevens Namn*
