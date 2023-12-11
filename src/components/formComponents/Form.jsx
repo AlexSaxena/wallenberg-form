@@ -1,11 +1,12 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import SchoolClassSelection from "./SchoolClassSelection";
 import HouseholdIncome from "./HouseholdIncome";
 import Allergies from "./Allergies";
 import ComputerContract from "./ComputerContract";
 import GdprConsent from "./GdprConsent";
+import IncomeDeclaration from "./IncomeDeclaration";
 
 export default function PlacesForm() {
   const [showNumbers_guardians, setNumbers_guardians] = useState(false);
@@ -33,16 +34,17 @@ export default function PlacesForm() {
     // Log Data Sanity check
     console.table("Form Data:", formData);
 
+    // TEMP COMMENTED FOR TESTING
     // Send the form data to API using Axios
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/studentForm",
-        formObject
-      );
-      console.log(response.data); // Handle response.
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:3001/api/studentForm",
+    //     formObject
+    //   );
+    //   console.log(response.data); // Handle response.
+    // } catch (error) {
+    //   console.error("Error submitting form:", error);
+    // }
   };
 
   return (
@@ -374,138 +376,9 @@ export default function PlacesForm() {
               <ComputerContract />
               {/* Om VH accepterar GDPR */}
               <GdprConsent />
-              <h1 className="text-xl font-bold text-center my-4">
-                Inkomstanmälan
-              </h1>
-              <h3>
-                Inkomstanmälan för skolbarnsomsorgsavgift (gäller endast RWS
-                Bromma och Skövde då man valt att gå på fritidshem/fritidsklubb)
-              </h3>
-              <div className="grid grid-cols-2 gap-4 p-4">
-                <div className="col-span-2 font-semibold">
-                  Vårdnadshavare 1 (fakturamottagare)
-                </div>
+              {/* Om man valt fritidshem/fritidsklubb RWS Bromma och Skövde */}
+              <IncomeDeclaration />
 
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Namn:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Fullständigt namn"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Personnummer:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="ÅÅÅÅMMDD-XXXX"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Adress:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Gatuadress"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Postnummer ort:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Postnummer ort"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">
-                    Mobilnummer/telefon
-                  </label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Mobilnummer"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">
-                    Arbetsgivare/skola
-                  </label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Arbetsgivare"
-                  />
-                </div>
-
-                <div className="col-span-2 font-semibold">
-                  Vårdnadshavare 2/Sammanboende
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Namn:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Fullständigt namn"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Personnummer:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="ÅÅÅÅMMDD-XXXX"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Adress:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Gatuadress"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">Postnummer ort:</label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Postnummer ort"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">
-                    Mobilnummer/telefon
-                  </label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Mobilnummer"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="font-semibold mt-2">
-                    Arbetsgivare/skola
-                  </label>
-                  <input
-                    type="text"
-                    className="form-input mt-1 block w-full"
-                    placeholder="Arbetsgivare"
-                  />
-                </div>
-              </div>
               <hr />
               <HouseholdIncome />
               <hr />
