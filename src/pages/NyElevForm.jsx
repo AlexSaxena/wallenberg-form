@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Form from "../components/Form";
+import Form from "../components/formComponents/Form";
 
 const NyElevForm = () => {
   return (
