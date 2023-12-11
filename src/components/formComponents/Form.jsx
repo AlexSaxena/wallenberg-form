@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import SchoolClassSelection from "./SchoolClassSelection";
 import HouseholdIncome from "./HouseholdIncome";
@@ -11,13 +12,39 @@ export default function PlacesForm() {
   const [showNativeLanguageChoice, setshowNativeLanguageChoice] =
     useState(false);
 
+  // Handler For Submitting data
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    // Convert formData to a plain object
+    const formObject = {};
+    formData.forEach((value, key) => {
+      formObject[key] = value;
+    });
+
+    // Log Data Sanity check
+    console.table("Form Data:", formData);
+
+    // Send the form data to API using Axios
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/studentForm",
+        formObject
+      );
+      console.log(response.data); // Handle response.
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <div className="bg-gray-100">
         <div className="container mx-auto p-8">
           <div className="bg-white shadow rounded-lg p-6">
-            <form action="#" method="POST" className="space-y-4">
-              ----------------------------------
+            {/* <form action="#" method="POST" className="space-y-4"> */}
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Elevens Namn*
@@ -79,8 +106,8 @@ export default function PlacesForm() {
                   </label>
                   <input
                     type="text"
-                    id="gardian_one_name"
-                    name="gardian_one_name"
+                    id="guardian_one_name"
+                    name="guardian_one_name"
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     required
                   />
@@ -92,8 +119,8 @@ export default function PlacesForm() {
                   </label>
                   <input
                     type="text"
-                    id="gardian_one_personal_number"
-                    name="gardian_one_personal_number"
+                    id="guardian_one_personal_number"
+                    name="guardian_one_personal_number"
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     required
                   />
@@ -105,8 +132,8 @@ export default function PlacesForm() {
                   </label>
                   <input
                     type="text"
-                    id="gardian_one_e-mail"
-                    name="gardian_one_e-mail"
+                    id="guardian_one_e-mail"
+                    name="guardian_one_e-mail"
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     required
                   />
@@ -123,8 +150,8 @@ export default function PlacesForm() {
                     </label>
                     <input
                       type="text"
-                      id="gardian_two_name"
-                      name="gardian_two_name"
+                      id="guardian_two_name"
+                      name="guardian_two_name"
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                       required
                     />
@@ -136,8 +163,8 @@ export default function PlacesForm() {
                     </label>
                     <input
                       type="text"
-                      id="gardian_two_personal_number"
-                      name="gardian_two_personal_number"
+                      id="guardian_two_personal_number"
+                      name="guardian_two_personal_number"
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                       required
                     />
@@ -149,8 +176,8 @@ export default function PlacesForm() {
                     </label>
                     <input
                       type="text"
-                      id="gardian_two_e-mail"
-                      name="gardian_two_e-mail"
+                      id="guardian_two_e-mail"
+                      name="guardian_two_e-mail"
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                       required
                     />
@@ -472,9 +499,9 @@ export default function PlacesForm() {
                   />
                 </div>
               </div>
-              ---------------------------------
+              <hr />
               <HouseholdIncome />
-              ---------------------------------
+              <hr />
               <div className="flex justify-center">
                 <button
                   type="submit"
