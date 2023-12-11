@@ -66,8 +66,8 @@ const SchoolClassSelection = () => {
         Vilken klass ska eleven börja i?
       </label>
       <select
-        id="class"
-        name="class"
+        id="grade"
+        name="grade"
         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         onChange={handleChange}
         value={selectedClass}
