@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Form from "../components/formComponents/Form";
 
-const NyElevForm = () => {
+const NewStudentForm = () => {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ const NyElevForm = () => {
   );
 };
 
-export default NyElevForm;
+export default NewStudentForm;

@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import NyElevForm from './pages/NyElevForm';
-import ErrorPage from './pages/ErrorPage';
-import LoginPage from './pages/LoginPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import NewStudentForm from "./pages/NewStudentForm";
+import ErrorPage from "./pages/ErrorPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/hem" element={<Home />} />
-          <Route path="/form" element={<NyElevForm />} />
+          <Route path="/form" element={<NewStudentForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
