@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const Allergies = () => {
   const [hasAllergies, setHasAllergies] = useState(false);
-  const [allergyExplanation, setAllergyExplanation] = useState('');
+  const [allergyExplanation, setAllergyExplanation] = useState("");
 
   const toggleAllergies = () => {
     setHasAllergies(!hasAllergies);

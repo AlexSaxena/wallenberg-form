@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const ComputerContract = () => {
-  const [computerContractAccepted, setComputerContractAccepted] = useState(false);
+  const [computerContractAccepted, setComputerContractAccepted] =
+    useState(false);
 
   const toggleComputerContract = () => {
     setComputerContractAccepted(!computerContractAccepted);
@@ -18,7 +19,7 @@ const ComputerContract = () => {
           onChange={toggleComputerContract}
         />
         <label htmlFor="computerContractCheckbox" className="ml-2">
-        Jag accepterar villkoren i datoravtalet.
+          Jag accepterar villkoren i datoravtalet.
         </label>
       </div>
     </div>

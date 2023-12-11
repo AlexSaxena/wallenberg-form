@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ProfileSelection = () => {
   const [selectedLanguages, setSelectedLanguages] = useState({

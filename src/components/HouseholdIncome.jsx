@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-
-
+import { useState } from "react";
 
 const statements = [
   "Lön, Arvode, förmåner:",
@@ -11,12 +9,14 @@ const statements = [
   "Skattepliktigt utbildningsbidrag:",
   "Inkomst av näringsverksamhet efter avdrag för egenavgifter:",
   "Vårdbidrag:",
-  "Vårdbidrag:"
+  "Vårdbidrag:",
 ];
 
 const HouseholdIncome = () => {
   const [acceptsMaxFee, setAcceptsMaxFee] = useState(false);
-  const [incomeValues, setIncomeValues] = useState(Array(statements.length).fill({ income1: '', income2: '' }));
+  const [incomeValues, setIncomeValues] = useState(
+    Array(statements.length).fill({ income1: "", income2: "" })
+  );
   const [totals, setTotals] = useState({ income1: 0, income2: 0 });
 
   const handleCheckboxChange = (event) => {
@@ -34,7 +34,7 @@ const HouseholdIncome = () => {
       (acc, current) => {
         return {
           income1: acc.income1 + (Number(current.income1) || 0),
-          income2: acc.income2 + (Number(current.income2) || 0)
+          income2: acc.income2 + (Number(current.income2) || 0),
         };
       },
       { income1: 0, income2: 0 }
@@ -42,36 +42,28 @@ const HouseholdIncome = () => {
     setTotals(newTotals);
   };
 
+  //  IrregularIncome
 
-          //  IrregularIncome
+  const [isIrregularIncome, setIsIrregularIncome] = useState(false);
+  const [irregularIncomeExplanation, setIrregularIncomeExplanation] =
+    useState("");
 
-          const [isIrregularIncome, setIsIrregularIncome] = useState(false);
-          const [irregularIncomeExplanation, setIrregularIncomeExplanation] = useState('');
+  const toggleIrregularIncome = () => {
+    setIsIrregularIncome(!isIrregularIncome);
+  };
 
-          const toggleIrregularIncome = () => {
-            setIsIrregularIncome(!isIrregularIncome);
-          };
+  const handleIrregularIncomeChange = (event) => {
+    setIrregularIncomeExplanation(event.target.value);
+  };
 
-          const handleIrregularIncomeChange = (event) => {
-            setIrregularIncomeExplanation(event.target.value);
-          };
-
-          //---------IrregularIncome END
-
-
-
-
-
+  //---------IrregularIncome END
 
   return (
-
-
-    
     <div>
-        
       <h1 className="text-xl font-bold text-center my-4">Hushållets inkomst</h1>
       <p className="text-center mb-4">
-        Lämnas inte begärda inkomstuppgifter debiteras högsta avgift enligt gällande taxa.
+        Lämnas inte begärda inkomstuppgifter debiteras högsta avgift enligt
+        gällande taxa.
       </p>
       <div className="flex items-center mb-4">
         <input
@@ -89,9 +81,15 @@ const HouseholdIncome = () => {
         <table className="table-auto w-full">
           <thead>
             <tr>
-              <th className="font-semibold py-2 text-left">Avgiftgrundande bruttoinkomst (Inkomst före skatt) per månad</th>
-              <th className="font-semibold py-2 text-left">Vårdnadshavare 1 - fakturamottagare</th>
-              <th className="font-semibold py-2 text-left">Vårdnadshavare 2 - /Sammanboende</th>
+              <th className="font-semibold py-2 text-left">
+                Avgiftgrundande bruttoinkomst (Inkomst före skatt) per månad
+              </th>
+              <th className="font-semibold py-2 text-left">
+                Vårdnadshavare 1 - fakturamottagare
+              </th>
+              <th className="font-semibold py-2 text-left">
+                Vårdnadshavare 2 - /Sammanboende
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +107,9 @@ const HouseholdIncome = () => {
                       className="form-input mt-1 block w-full"
                       placeholder="SEK"
                       value={incomeValues[index].income1}
-                      onChange={(e) => handleIncomeChange(index, 'income1', e.target.value)}
+                      onChange={(e) =>
+                        handleIncomeChange(index, "income1", e.target.value)
+                      }
                     />
                   </div>
                 </td>
@@ -120,7 +120,9 @@ const HouseholdIncome = () => {
                       className="form-input mt-1 block w-full"
                       placeholder="SEK"
                       value={incomeValues[index].income2}
-                      onChange={(e) => handleIncomeChange(index, 'income2', e.target.value)}
+                      onChange={(e) =>
+                        handleIncomeChange(index, "income2", e.target.value)
+                      }
                     />
                   </div>
                 </td>
@@ -130,12 +132,16 @@ const HouseholdIncome = () => {
               <td className="py-2 font-semibold">Totalt</td>
               <td className="py-2">
                 <div className="flex flex-col">
-                  <span className="mt-1 block w-full">{totals.income1} SEK</span>
+                  <span className="mt-1 block w-full">
+                    {totals.income1} SEK
+                  </span>
                 </div>
               </td>
               <td className="py-2">
                 <div className="flex flex-col">
-                  <span className="mt-1 block w-full">{totals.income2} SEK</span>
+                  <span className="mt-1 block w-full">
+                    {totals.income2} SEK
+                  </span>
                 </div>
               </td>
             </tr>
@@ -143,10 +149,8 @@ const HouseholdIncome = () => {
         </table>
       </div>
 
-{/* ... Lower checkbox with text area  */}
-<div>
-
-      </div>
+      {/* ... Lower checkbox with text area  */}
+      <div></div>
       <div className="flex items-center my-4">
         <input
           id="irregularIncomeCheckbox"
@@ -156,12 +160,16 @@ const HouseholdIncome = () => {
           onChange={toggleIrregularIncome}
         />
         <label htmlFor="irregularIncomeCheckbox" className="ml-2">
-          Oregelbunden inkomst (OBS! hushållets inkomst måste uppskattas i tabellen ovanför)
+          Oregelbunden inkomst (OBS! hushållets inkomst måste uppskattas i
+          tabellen ovanför)
         </label>
       </div>
       {isIrregularIncome && (
         <div className="flex flex-col mb-4">
-          <label htmlFor="irregularIncomeExplanation" className="font-semibold mt-2">
+          <label
+            htmlFor="irregularIncomeExplanation"
+            className="font-semibold mt-2"
+          >
             Förklaring av oregelbunden inkomst:
           </label>
           <textarea
@@ -175,8 +183,6 @@ const HouseholdIncome = () => {
         </div>
       )}
       {/* ... Lower checkbox with text area END  */}
-    
-
     </div>
   );
 };

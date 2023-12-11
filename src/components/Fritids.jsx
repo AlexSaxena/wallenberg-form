@@ -1,8 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 const Fritids = () => {
   // You might want to manage state here if you need to handle the selected value
-  const [selectedValue, setSelectedValue] = React.useState(null);
+  const [selectedValue, setSelectedValue] = useState(null);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
