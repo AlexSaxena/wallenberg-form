@@ -13,10 +13,12 @@ const ComputerContract = () => {
       <div className="flex items-center my-4">
         <input
           id="computerContractCheckbox"
+          name="computerContractCheckbox"
           type="checkbox"
           className="form-checkbox"
           checked={computerContractAccepted}
           onChange={toggleComputerContract}
+          required
         />
         <label htmlFor="computerContractCheckbox" className="ml-2">
           Jag accepterar villkoren i datoravtalet.

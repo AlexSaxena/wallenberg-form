@@ -12,10 +12,12 @@ const GdprConsent = () => {
       <div className="flex items-center my-4">
         <input
           id="gdprConsentCheckbox"
+          name="gdprConsentCheckbox"
           type="checkbox"
           className="form-checkbox"
           checked={gdprConsentGiven}
           onChange={toggleGdprConsent}
+          required
         />
         <label htmlFor="gdprConsentCheckbox" className="ml-2">
           Jag har läst och accepterat dataskyddsförordningen (GDPR). Vi
