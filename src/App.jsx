@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/hem" element={<Home />} />
-          <Route path="/form" element={<NewStudentForm />} />
+          <Route path="/studentform" element={<NewStudentForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

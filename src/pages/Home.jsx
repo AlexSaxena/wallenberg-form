@@ -19,7 +19,7 @@ const Home = () => {
             Välkommen till Raoul Wallenberg Skolan! Fyll i formuläret för nya
             studenter.
           </p>
-          <Link to="/form">
+          <Link to="/studentform">
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none hover:bg-blue-600 mx-auto block">
               Till Formulär
             </button>

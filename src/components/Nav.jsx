@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const NavLinks = () => {
   return (
@@ -8,7 +8,7 @@ const NavLinks = () => {
       <NavLink to="/" className="text-white mx-2">
         Hem
       </NavLink>
-      <NavLink to="/Form" className="text-white mx-2">
+      <NavLink to="/studentform" className="text-white mx-2">
         Formulär
       </NavLink>
       <NavLink to="/Login" className="text-white mx-2">
@@ -34,9 +34,9 @@ const Nav = () => {
 
   // Add event listener for window resize
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
