@@ -17,6 +17,13 @@ export default function PlacesForm() {
     event.preventDefault();
     const formData = new FormData(event.target);
 
+    // Manually set the value for the allergiesCheckbox field
+    const allergiesCheckbox = formData.get("allergiesCheckbox");
+    formData.set(
+      "allergiesCheckbox",
+      allergiesCheckbox === "on" ? "ja" : "nej"
+    );
+
     // Convert formData to a plain object
     const formObject = {};
     formData.forEach((value, key) => {

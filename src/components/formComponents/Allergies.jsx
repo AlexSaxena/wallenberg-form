@@ -17,6 +17,7 @@ const Allergies = () => {
       <div className="flex items-center my-4">
         <input
           id="allergiesCheckbox"
+          name="allergiesCheckbox"
           type="checkbox"
           className="form-checkbox"
           checked={hasAllergies}
@@ -34,6 +35,7 @@ const Allergies = () => {
           </label>
           <textarea
             id="allergyExplanation"
+            name="allergyExplanation"
             className="form-textarea mt-1 block w-full"
             rows="3"
             placeholder="Skriv barnets allergier här:"
