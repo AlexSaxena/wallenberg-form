@@ -5,11 +5,13 @@ import Bvc from "./Bvc";
 import LanguageSelect from "./LanguageSelect";
 import ProfileSelection from "./ProfileSelection";
 
-const SchoolClassSelection = () => {
+// eslint-disable-next-line react/prop-types
+const SchoolClassSelection = ({ onGradeChange }) => {
   const [selectedClass, setSelectedClass] = useState("");
 
   const handleChange = (event) => {
     setSelectedClass(event.target.value);
+    onGradeChange(event);
   };
 
   const renderMessage = () => {

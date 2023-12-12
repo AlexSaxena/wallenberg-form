@@ -13,6 +13,19 @@ export default function PlacesForm() {
   const [showNativeLanguageChoice, setshowNativeLanguageChoice] =
     useState(false);
 
+  const [selectedSchool, setSelectedSchool] = useState("");
+  const [selectedGrade, setSelectedGrade] = useState("");
+
+  // Handler for Checking selected School
+  const handleSchoolChange = (event) => {
+    setSelectedSchool(event.target.value);
+  };
+
+  // Handler for checking selected Grade
+  const handleGradeChange = (event) => {
+    setSelectedGrade(event.target.value);
+  };
+
   // Handler For Submitting data
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -214,6 +227,8 @@ export default function PlacesForm() {
                 <select
                   id="school"
                   name="school"
+                  onChange={handleSchoolChange}
+                  value={selectedSchool}
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 >
                   <option value="">Välj skola</option>
@@ -227,7 +242,7 @@ export default function PlacesForm() {
               </div>
               <div>
                 {/* Vilken klass / årskurs */}
-                <SchoolClassSelection />
+                <SchoolClassSelection onGradeChange={handleGradeChange} />
               </div>
               <div>
                 <span className="text-sm font-medium text-gray-700">
@@ -377,7 +392,9 @@ export default function PlacesForm() {
               {/* Om VH accepterar GDPR */}
               <GdprConsent />
               {/* Om man valt fritidshem/fritidsklubb RWS Bromma och Skövde */}
-              <IncomeDeclaration />
+              {(selectedSchool === "skövde" || selectedSchool === "bromma") &&
+                ((selectedGrade >= "1" && selectedGrade <= "5") ||
+                  selectedGrade === "förskoleklass") && <IncomeDeclaration />}
 
               <hr />
               <HouseholdIncome />
