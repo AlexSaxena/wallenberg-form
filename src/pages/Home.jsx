@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <Header />
       <div className="mt-8 text-center">
-        <h1 className="text-4xl font-bold mb-2">Raoul Wallenberg Skolan</h1>
+        <h1 className="text-4xl font-bold mb-2">Raoul Wallenbergskolan</h1>
         <p className="text-lg text-gray-600 mb-4">Formulär för elever</p>
       </div>
       <div
