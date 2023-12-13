@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import NewStudentForm from "./pages/NewStudentForm";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
+import StudentSortingPage from "./pages/StudentSortingPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/hem" element={<Home />} />
           <Route path="/studentform" element={<NewStudentForm />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/studenter" element={<StudentSortingPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

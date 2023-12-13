@@ -14,6 +14,9 @@ const NavLinks = () => {
       <NavLink to="/Login" className="text-white mx-2">
         Admin
       </NavLink>
+      <NavLink to="/Studenter" className="text-white mx-2">
+        Studenter
+      </NavLink>
     </>
   );
 };
