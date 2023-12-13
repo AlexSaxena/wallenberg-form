@@ -35,7 +35,7 @@ const StudentSortingPage = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center bg-gray-200">
       <Header />
-      <h1>Sorting Page</h1>
+      {/* <h1>Sorting Page</h1>
       <h2>Page for finding students by querying API</h2>
       <div>
         <h2>All Students</h2>
@@ -54,6 +54,47 @@ const StudentSortingPage = () => {
               </div>
             );
           })}
+      </div> */}
+      <div className="my-8">
+        <h1 className="text-4xl font-bold">Sorting Page</h1>
+        <h2 className="text-lg text-gray-600">
+          Page for finding students by querying API [WIP] <br /> Add Connection
+          for API - Check Postman W MongoDB [Done ?]
+        </h2>
+      </div>
+      <div className="max-w-2xl mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 className="text-xl font-semibold mb-4">Alla Studenter</h2>
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border border-gray-300">Namn</th>
+              <th className="py-2 px-4 border border-gray-300">Stad</th>
+              <th className="py-2 px-4 border border-gray-300">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students &&
+              students.map((student) => (
+                <tr key={student._id}>
+                  <td className="py-2 px-4 border border-gray-300">
+                    {student.name}
+                  </td>
+                  <td className="py-2 px-4 border border-gray-300">
+                    {student.city}
+                  </td>
+                  <td className="py-2 px-4 border border-gray-300">
+                    <button
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline-red"
+                      type="button"
+                      onClick={() => deleteStudent(student._id)}
+                    >
+                      Ta Bort
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
