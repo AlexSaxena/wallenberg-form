@@ -1,4 +1,24 @@
+import { useState } from "react";
+
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Email & Password state values for form submission
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
+
   return (
     <div className="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
       <div className="w-full">
@@ -9,13 +29,15 @@ const LoginForm = () => {
           </p>
         </div>
         <div className="mt-5">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="relative mt-6">
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="Email"
+                value={email}
+                onChange={handleEmailChange}
                 className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
               />
               <label
@@ -31,6 +53,8 @@ const LoginForm = () => {
                 name="password"
                 id="password"
                 placeholder="Lösenord"
+                value={password}
+                onChange={handlePasswordChange}
                 className="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
               />
               <label
@@ -48,16 +72,6 @@ const LoginForm = () => {
                 Logga in
               </button>
             </div>
-            {/* <p className="text-center text-sm text-gray-500">
-              Inget Konto?{' '}
-              <a
-                href="#!"
-                className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"
-              >
-                Registrera Dig
-              </a>
-              !
-            </p> */}
           </form>
         </div>
       </div>
