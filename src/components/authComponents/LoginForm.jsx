@@ -1,11 +1,12 @@
 import { useState } from "react";
+import axios from "axios";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -14,9 +15,14 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Email & Password state values for form submission
-    console.log("Email:", email);
+    // Username & Password state values for form submission
+    console.log("Username:", username);
     console.log("Password:", password);
+
+    axios.post("/auth/login", {
+      username: username,
+      password: password,
+    });
   };
 
   return (
@@ -32,19 +38,19 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit}>
             <div className="relative mt-6">
               <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                value={email}
-                onChange={handleEmailChange}
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Användarnamn"
+                value={username}
+                onChange={handleUsernameChange}
                 className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
               />
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
               >
-                Email
+                Användarnamn
               </label>
             </div>
             <div className="relative mt-6">
