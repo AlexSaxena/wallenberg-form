@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import LoginForm from '../components/LoginForm';
+import Header from "../components/Header";
+import LoginForm from "../components/authComponents/LoginForm";
 
 export default function Login() {
   return (
