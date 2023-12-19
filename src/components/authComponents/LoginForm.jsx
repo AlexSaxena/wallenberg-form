@@ -13,16 +13,22 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Username & Password state values for form submission
-    console.log("Username:", username);
-    console.log("Password:", password);
-
-    axios.post("/auth/login", {
-      username: username,
-      password: password,
-    });
+    try {
+      const res = await axios.post(
+        "/auth/login",
+        {
+          username: username,
+          password: password,
+        },
+        { withCredentials: true }
+      );
+      console.log("Login successful:", res.data);
+      console.log("res", res);
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message);
+    }
   };
 
   return (
