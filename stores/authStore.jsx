@@ -19,18 +19,13 @@ const authStore = create((set) => ({
     });
   },
 
-  login: async (e) => {
-    e.preventDefault();
-
+  login: async () => {
     try {
-      const res = await axios.post(
-        "/auth/login",
-        {
-          username: e.target.username.value,
-          password: e.target.password.value,
-        },
-        { withCredentials: true }
-      );
+      const { loginForm } = authStore.getState();
+
+      const res = await axios.post("/auth/login", loginForm, {
+        withCredentials: true,
+      });
 
       set({ loggedIn: true });
       console.log("Login successful:", res.data);

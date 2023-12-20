@@ -1,7 +1,17 @@
 import authStore from "../../../stores/authStore";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const store = authStore();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await store.login();
+
+    // navigate
+    navigate("/studenter");
+  };
 
   return (
     <div className="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
@@ -13,7 +23,7 @@ const LoginForm = () => {
           </p>
         </div>
         <div className="mt-5">
-          <form onSubmit={store.login}>
+          <form onSubmit={handleSubmit}>
             <div className="relative mt-6">
               <input
                 type="text"
