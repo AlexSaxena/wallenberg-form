@@ -2,6 +2,8 @@ import { create } from "zustand";
 import axios from "axios";
 
 const authStore = create((set) => ({
+  loggedIn: null,
+
   loginForm: {
     username: "",
     password: "",
@@ -29,8 +31,9 @@ const authStore = create((set) => ({
         },
         { withCredentials: true }
       );
+
+      set({ loggedIn: true });
       console.log("Login successful:", res.data);
-      console.log("res", res);
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
     }
