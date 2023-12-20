@@ -38,6 +38,16 @@ const authStore = create((set) => ({
       console.error("Login error:", error.response?.data || error.message);
     }
   },
+
+  checkAuth: async () => {
+    try {
+      await axios.get("/check-auth", { withCredentials: true });
+      set({ loggedIn: true });
+    } catch (err) {
+      console.error("Cookie", err.response);
+      set({ loggedIn: false });
+    }
+  },
 }));
 
 export default authStore;
