@@ -16,6 +16,25 @@ const authStore = create((set) => ({
       };
     });
   },
+
+  login: async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "/auth/login",
+        {
+          username: e.target.username.value,
+          password: e.target.password.value,
+        },
+        { withCredentials: true }
+      );
+      console.log("Login successful:", res.data);
+      console.log("res", res);
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message);
+    }
+  },
 }));
 
 export default authStore;
