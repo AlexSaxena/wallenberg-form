@@ -1,35 +1,38 @@
-import { useState } from "react";
-import axios from "axios";
+// import { useState } from "react";
+// import axios from "axios";
+
+import authStore from "../../../stores/authStore";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const store = authStore();
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
+  // const handleUsernameChange = (e) => {
+  //   setUsername(e.target.value);
+  // };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(
-        "/auth/login",
-        {
-          username: username,
-          password: password,
-        },
-        { withCredentials: true }
-      );
-      console.log("Login successful:", res.data);
-      console.log("res", res);
-    } catch (error) {
-      console.error("Login error:", error.response?.data || error.message);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post(
+  //       "/auth/login",
+  //       {
+  //         username: username,
+  //         password: password,
+  //       },
+  //       { withCredentials: true }
+  //     );
+  //     console.log("Login successful:", res.data);
+  //     console.log("res", res);
+  //   } catch (error) {
+  //     console.error("Login error:", error.response?.data || error.message);
+  //   }
+  // };
 
   return (
     <div className="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
@@ -41,15 +44,16 @@ const LoginForm = () => {
           </p>
         </div>
         <div className="mt-5">
-          <form onSubmit={handleSubmit}>
+          {/* <form onSubmit={handleSubmit}> */}
+          <form>
             <div className="relative mt-6">
               <input
                 type="text"
                 name="username"
                 id="username"
                 placeholder="Användarnamn"
-                value={username}
-                onChange={handleUsernameChange}
+                onChange={store.updateLoginForm}
+                value={store.loginForm.username}
                 className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
               />
               <label
@@ -65,8 +69,8 @@ const LoginForm = () => {
                 name="password"
                 id="password"
                 placeholder="Lösenord"
-                value={password}
-                onChange={handlePasswordChange}
+                onChange={store.updateLoginForm}
+                value={store.loginForm.password}
                 className="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
               />
               <label
