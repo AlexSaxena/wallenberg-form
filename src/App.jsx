@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import StudentSortingPage from "./pages/StudentSortingPage";
 import RequireAuth from "./components/authComponents/requireAuth";
+import LogoutPage from "./pages/LogoutPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/studentform" element={<NewStudentForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<LogoutPage />} />
           <Route
             path="/studenter"
             element={

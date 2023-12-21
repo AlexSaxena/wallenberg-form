@@ -81,6 +81,11 @@ const authStore = create((set) => ({
       },
     });
   },
+
+  logout: async () => {
+    await axios.get("/auth/logout", { withCredentials: true });
+    set({ loggedIn: false });
+  },
 }));
 
 export default authStore;

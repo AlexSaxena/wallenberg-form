@@ -11,11 +11,14 @@ const NavLinks = () => {
       <NavLink to="/studentform" className="text-white mx-2">
         Formulär
       </NavLink>
-      <NavLink to="/Login" className="text-white mx-2">
+      <NavLink to="/Studenter" className="text-white mx-2">
         Admin
       </NavLink>
-      <NavLink to="/Studenter" className="text-white mx-2">
-        Studenter
+      <NavLink to="/Login" className="text-white mx-2">
+        Logga In
+      </NavLink>
+      <NavLink to="/Logout" className="text-white mx-2">
+        Logga Ut
       </NavLink>
     </>
   );
