@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import authStore from "../../stores/authStore";
 
 const NavLinks = () => {
+  const store = authStore();
+
+  useEffect(() => {
+    store.checkAuth();
+  }, []);
+
   return (
     <>
       <NavLink to="/" className="text-white mx-2">
@@ -14,12 +21,17 @@ const NavLinks = () => {
       <NavLink to="/Studenter" className="text-white mx-2">
         Admin
       </NavLink>
-      <NavLink to="/Login" className="text-white mx-2">
-        Logga In
-      </NavLink>
-      <NavLink to="/Logout" className="text-white mx-2">
-        Logga Ut
-      </NavLink>
+      {store.loggedIn ? (
+        // If logged in, show "Logga Ut"
+        <NavLink to="/Logout" className="text-white mx-2">
+          Logga Ut
+        </NavLink>
+      ) : (
+        // If not logged in, show "Logga In"
+        <NavLink to="/Login" className="text-white mx-2">
+          Logga In
+        </NavLink>
+      )}
     </>
   );
 };
