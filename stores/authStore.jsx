@@ -38,9 +38,7 @@ const authStore = create((set) => ({
     try {
       const { loginForm } = authStore.getState();
 
-      const res = await axios.post("/auth/login", loginForm, {
-        withCredentials: true,
-      });
+      const res = await axios.post("/auth/login", loginForm);
 
       set({
         loggedIn: true,
@@ -57,7 +55,7 @@ const authStore = create((set) => ({
 
   checkAuth: async () => {
     try {
-      await axios.get("/check-auth", { withCredentials: true });
+      await axios.get("/check-auth");
       set({ loggedIn: true });
     } catch (err) {
       console.error("Cookie", err.response);
@@ -68,9 +66,7 @@ const authStore = create((set) => ({
   register: async () => {
     const { registerForm } = authStore.getState();
 
-    const res = await axios.post("/auth/register", registerForm, {
-      withCredentials: true,
-    });
+    const res = await axios.post("/auth/register", registerForm);
     console.log("res ->", res);
     console.log("Register successful:", res.data);
 
@@ -83,7 +79,7 @@ const authStore = create((set) => ({
   },
 
   logout: async () => {
-    await axios.get("/auth/logout", { withCredentials: true });
+    await axios.get("/auth/logout");
     set({ loggedIn: false });
   },
 }));
