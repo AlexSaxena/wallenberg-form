@@ -42,7 +42,13 @@ const authStore = create((set) => ({
         withCredentials: true,
       });
 
-      set({ loggedIn: true });
+      set({
+        loggedIn: true,
+        loginForm: {
+          username: "",
+          password: "",
+        },
+      });
       console.log("Login successful:", res.data);
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
@@ -67,6 +73,13 @@ const authStore = create((set) => ({
     });
     console.log("res ->", res);
     console.log("Register successful:", res.data);
+
+    set({
+      registerForm: {
+        username: "",
+        password: "",
+      },
+    });
   },
 }));
 
