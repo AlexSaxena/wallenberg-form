@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import NewStudentForm from "./pages/NewStudentForm";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
+import Register from "./pages/RegisterPage";
 import StudentSortingPage from "./pages/StudentSortingPage";
 import RequireAuth from "./components/authComponents/requireAuth";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/hem" element={<Home />} />
           <Route path="/studentform" element={<NewStudentForm />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/studenter"
             element={

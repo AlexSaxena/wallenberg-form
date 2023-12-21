@@ -9,12 +9,27 @@ const authStore = create((set) => ({
     password: "",
   },
 
+  registerForm: {
+    username: "",
+    password: "",
+  },
+
   updateLoginForm: (e) => {
     const { name, value } = e.target;
 
     set((state) => {
       return {
         loginForm: { ...state.loginForm, [name]: value },
+      };
+    });
+  },
+
+  updateRegisterForm: (e) => {
+    const { name, value } = e.target;
+
+    set((state) => {
+      return {
+        registerForm: { ...state.registerForm, [name]: value },
       };
     });
   },
@@ -42,6 +57,16 @@ const authStore = create((set) => ({
       console.error("Cookie", err.response);
       set({ loggedIn: false });
     }
+  },
+
+  register: async () => {
+    const { registerForm } = authStore.getState();
+
+    const res = await axios.post("/auth/register", registerForm, {
+      withCredentials: true,
+    });
+    console.log("res ->", res);
+    console.log("Register successful:", res.data);
   },
 }));
 
