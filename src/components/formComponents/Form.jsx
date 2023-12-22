@@ -7,18 +7,27 @@ import Allergies from "./Allergies";
 import ComputerContract from "./ComputerContract";
 import GdprConsent from "./GdprConsent";
 import IncomeDeclaration from "./IncomeDeclaration";
+import GuardianForm from "./GuardianForm";
 
 export default function PlacesForm() {
-  const [showNumbers_guardians, setNumbers_guardians] = useState(false);
+  const [showNumbersGuardians, setNumbersGuardians] = useState(false);
   const [showNativeLanguageChoice, setshowNativeLanguageChoice] =
     useState(false);
 
   const [selectedSchool, setSelectedSchool] = useState("");
   const [selectedGrade, setSelectedGrade] = useState("");
+  const [numberOfGuardians, setNumberOfGuardians] = useState(1);
 
   // Handler for Checking selected School
   const handleSchoolChange = (event) => {
     setSelectedSchool(event.target.value);
+  };
+
+  // Handler for choosing the number of guardians
+  const handleNumberOfGuardiansChange = (event) => {
+    const selectedNumber = parseInt(event.target.value, 10);
+    setNumbersGuardians(selectedNumber === 2);
+    setNumberOfGuardians(selectedNumber);
   };
 
   // Handler for checking selected Grade
@@ -99,113 +108,39 @@ export default function PlacesForm() {
                   <label className="inline-flex items-center">
                     <input
                       type="radio"
-                      name="numbers_guardians"
+                      name="number_of_guardians"
                       className="form-radio"
                       value="1"
-                      onChange={() => setNumbers_guardians(false)}
+                      checked={numberOfGuardians === 1}
+                      onChange={handleNumberOfGuardiansChange}
                     />
                     <span className="ml-2">1</span>
                   </label>
                   <label className="inline-flex items-center ml-6">
                     <input
                       type="radio"
-                      name="numbers_guardians"
+                      name="number_of_guardians"
                       className="form-radio"
                       value="2"
-                      onChange={() => setNumbers_guardians(true)}
+                      checked={numberOfGuardians === 2}
+                      onChange={handleNumberOfGuardiansChange}
                     />
                     <span className="ml-2">2</span>
                   </label>
                 </div>
               </div>
-              <div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-700">
-                    Vänligen fyll i uppgifter till vårdnadshavare 1*
-                  </h3>
-                  <label className="text-sm font-medium text-gray-700">
-                    Namn
-                  </label>
-                  <input
-                    type="text"
-                    id="guardian_one_name"
-                    name="guardian_one_name"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    required
-                  />
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium text-gray-700">
-                    Personnummer (YYYYDDMM-XXXX)*
-                  </label>
-                  <input
-                    type="text"
-                    id="guardian_one_personal_number"
-                    name="guardian_one_personal_number"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-gray-700">
-                    E-post*
-                  </label>
-                  <input
-                    type="text"
-                    id="guardian_one_e-mail"
-                    name="guardian_one_e-mail"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    required
-                  />
-                </div>
-              </div>
-              {showNumbers_guardians && (
-                <div>
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700">
-                      Vänligen fyll i uppgifter till vårdnadshavare 2*
-                    </h3>
-                    <label className="text-sm font-medium text-gray-700">
-                      Namn
-                    </label>
-                    <input
-                      type="text"
-                      id="guardian_two_name"
-                      name="guardian_two_name"
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">
-                      Personnummer (YYYYDDMM-XXXX)*
-                    </label>
-                    <input
-                      type="text"
-                      id="guardian_two_personal_number"
-                      name="guardian_two_personal_number"
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium text-gray-700">
-                      E-post*
-                    </label>
-                    <input
-                      type="text"
-                      id="guardian_two_e-mail"
-                      name="guardian_two_e-mail"
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                      required
-                    />
-                  </div>
-                </div>
+              <GuardianForm
+                number={1}
+                setNumbersGuardians={setNumbersGuardians}
+              />
+              {showNumbersGuardians && (
+                <GuardianForm
+                  number={2}
+                  setNumbersGuardians={setNumbersGuardians}
+                />
               )}
+
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Kommun där eleven är folkbokförd
