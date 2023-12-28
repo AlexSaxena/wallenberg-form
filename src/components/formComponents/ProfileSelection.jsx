@@ -1,24 +1,24 @@
 import { useState } from "react";
 
 const ProfileSelection = () => {
-  const [selectedLanguages, setSelectedLanguages] = useState({
+  const [selectedProfiles, setSelectedProfiles] = useState({
     first: "",
     second: "",
   });
-  const languages = ["Idrott", "Språk", "Äventyr", "Lek"];
+  const profiles = ["Idrott", "Språk", "Äventyr", "Lek"];
 
-  const handleLanguageChange = (event, step) => {
-    setSelectedLanguages({
-      ...selectedLanguages,
+  const handleProfileChange = (event, step) => {
+    setSelectedProfiles({
+      ...selectedProfiles,
       [step]: event.target.value,
     });
   };
 
   const getOptions = (step) => {
-    return languages.filter(
-      (language) =>
-        !Object.values(selectedLanguages).includes(language) ||
-        selectedLanguages[step] === language
+    return profiles.filter(
+      (profile) =>
+        !Object.values(selectedProfiles).includes(profile) ||
+        selectedProfiles[step] === profile
     );
   };
 
@@ -29,31 +29,31 @@ const ProfileSelection = () => {
       </label>
 
       <select
-        id="language_one"
-        name="language_one"
+        id="profile_one"
+        name="profile_one"
         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        onChange={(e) => handleLanguageChange(e, "first")}
-        value={selectedLanguages.first}
+        onChange={(e) => handleProfileChange(e, "first")}
+        value={selectedProfiles.first}
       >
-        <option value="">Altenativ 1</option>
-        {getOptions("first").map((language) => (
-          <option key={language} value={language}>
-            {language}
+        <option value="">Alternativ 1</option>
+        {getOptions("first").map((profile) => (
+          <option key={profile} value={profile}>
+            {profile}
           </option>
         ))}
       </select>
 
       <select
-        id="language_two"
-        name="language_two"
+        id="profile_two"
+        name="profile_two"
         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        onChange={(e) => handleLanguageChange(e, "second")}
-        value={selectedLanguages.second}
+        onChange={(e) => handleProfileChange(e, "second")}
+        value={selectedProfiles.second}
       >
-        <option value="">Altenativ 2</option>
-        {getOptions("second").map((language) => (
-          <option key={language} value={language}>
-            {language}
+        <option value="">Alternativ 2</option>
+        {getOptions("second").map((profile) => (
+          <option key={profile} value={profile}>
+            {profile}
           </option>
         ))}
       </select>
