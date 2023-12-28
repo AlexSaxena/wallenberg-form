@@ -17,7 +17,7 @@ const Fritids = () => {
         <label className="inline-flex items-center">
           <input
             type="radio"
-            name="guardians"
+            name="fritids"
             className="form-radio"
             value="ja"
             checked={selectedValue === "ja"}
@@ -28,7 +28,7 @@ const Fritids = () => {
         <label className="inline-flex items-center ml-6">
           <input
             type="radio"
-            name="guardians"
+            name="fritids"
             className="form-radio"
             value="nej"
             checked={selectedValue === "nej"}
