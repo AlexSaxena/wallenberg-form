@@ -79,16 +79,29 @@ export default function PlacesForm() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-700">
-                  Elevens Namn*
+                  Elevens Förnamn*
                 </label>
                 <input
                   type="text"
-                  id="student_name"
-                  name="student_name"
+                  id="student_first_name"
+                  name="student_first_name"
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                   required
                 />
               </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Elevens Efternamn*
+                </label>
+                <input
+                  type="text"
+                  id="student_last_name"
+                  name="student_last_name"
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  required
+                />
+              </div>
+
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Personnummer (YYYDDMM-XXXX)*
@@ -148,7 +161,7 @@ export default function PlacesForm() {
                 </label>
                 <select
                   id="county"
-                  name="county"
+                  name="student_county"
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 >
                   <option value="">Välj kommun</option>
