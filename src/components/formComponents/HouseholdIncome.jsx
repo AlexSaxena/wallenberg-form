@@ -68,6 +68,7 @@ const HouseholdIncome = () => {
       <div className="flex items-center mb-4">
         <input
           id="maxFeeCheckbox"
+          name="maxFeeCheckbox"
           type="checkbox"
           className="form-checkbox"
           checked={acceptsMaxFee}
@@ -154,6 +155,7 @@ const HouseholdIncome = () => {
       <div className="flex items-center my-4">
         <input
           id="irregularIncomeCheckbox"
+          name="irregularIncomeCheckbox"
           type="checkbox"
           className="form-checkbox"
           checked={isIrregularIncome}
@@ -174,6 +176,7 @@ const HouseholdIncome = () => {
           </label>
           <textarea
             id="irregularIncomeExplanation"
+            name="irregularIncomeExplanation"
             className="form-textarea mt-1 block w-full"
             rows="3"
             placeholder="Beskriv din oregelbundna inkomst här"
