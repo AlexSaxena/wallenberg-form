@@ -25,6 +25,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
           <label className="font-semibold mt-2">Personnummer:</label>
           <input
             type="text"
+            pattern="[0-9-]+"
             name="guardian1-income-personnummer"
             className="form-input mt-1 block w-full"
             placeholder="ÅÅÅÅMMDD-XXXX"
@@ -45,6 +46,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
           <label className="font-semibold mt-2">Postnummer:</label>
           <input
             type="text"
+            pattern="\d{5}"
             name="guardian1-income-postnummer"
             className="form-input mt-1 block w-full"
             placeholder="Postnummer"
@@ -55,6 +57,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
           <label className="font-semibold mt-2">Mobilnummer/telefon</label>
           <input
             type="text"
+            pattern="\d+"
             name="guardian1-income-telnr"
             className="form-input mt-1 block w-full"
             placeholder="Mobilnummer"
@@ -89,6 +92,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
               <label className="font-semibold mt-2">Personnummer:</label>
               <input
                 type="text"
+                pattern="[0-9-]+"
                 name="guardian2-income-personnummer"
                 className="form-input mt-1 block w-full"
                 placeholder="ÅÅÅÅMMDD-XXXX"
@@ -109,6 +113,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
               <label className="font-semibold mt-2">Postnummer:</label>
               <input
                 type="text"
+                pattern="\d{5}"
                 name="guardian2-income-postnummer"
                 className="form-input mt-1 block w-full"
                 placeholder="Postnummer"
@@ -119,6 +124,7 @@ const IncomeDeclaration = ({ numberOfGuardians }) => {
               <label className="font-semibold mt-2">Mobilnummer/telefon</label>
               <input
                 type="text"
+                pattern="\d+"
                 name="guardian2-income-telnr"
                 className="form-input mt-1 block w-full"
                 placeholder="Mobilnummer"
