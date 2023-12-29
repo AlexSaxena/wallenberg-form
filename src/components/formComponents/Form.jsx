@@ -42,11 +42,8 @@ export default function PlacesForm() {
     const formData = new FormData(event.target);
 
     // Manually set the value for the allergiesCheckbox field
-    const allergiesCheckbox = formData.get("allergiesCheckbox");
-    formData.set(
-      "allergiesCheckbox",
-      allergiesCheckbox === "on" ? "ja" : "nej"
-    );
+    const allergiesCheckbox = formData.get("allergiesCheckbox") === "on";
+    formData.set("allergiesCheckbox", allergiesCheckbox ? "ja" : "nej");
 
     // Convert formData to a plain object
     const formObject = {};
@@ -203,7 +200,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="picture_school_catalogue"
                       className="form-radio"
-                      value="ja"
+                      value="JA"
                     />
                     <span className="ml-2">Ja</span>
                   </label>
@@ -212,7 +209,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="picture_school_catalogue"
                       className="form-radio"
-                      value="nej"
+                      value="NEJ"
                     />
                     <span className="ml-2">Nej</span>
                   </label>
@@ -229,7 +226,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="image_published_internally"
                       className="form-radio"
-                      value="ja"
+                      value="JA"
                     />
                     <span className="ml-2">Ja</span>
                   </label>
@@ -238,7 +235,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="image_published_internally"
                       className="form-radio"
-                      value="nej"
+                      value="NEJ"
                     />
                     <span className="ml-2">Nej</span>
                   </label>
@@ -255,7 +252,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="image_published_externally"
                       className="form-radio"
-                      value="ja"
+                      value="JA"
                     />
                     <span className="ml-2">Ja</span>
                   </label>
@@ -264,7 +261,7 @@ export default function PlacesForm() {
                       type="radio"
                       name="image_published_externally"
                       className="form-radio"
-                      value="nej"
+                      value="NEJ"
                     />
                     <span className="ml-2">Nej</span>
                   </label>
@@ -284,7 +281,9 @@ export default function PlacesForm() {
               {/* Om man valt fritidshem/fritidsklubb RWS Bromma och Skövde */}
               {(selectedSchool === "skövde" || selectedSchool === "bromma") &&
                 ((selectedGrade >= "1" && selectedGrade <= "5") ||
-                  selectedGrade === "förskoleklass") && <IncomeDeclaration />}
+                  selectedGrade === "förskoleklass") && (
+                  <IncomeDeclaration numberOfGuardians={numberOfGuardians} />
+                )}
 
               <hr />
               <HouseholdIncome />
