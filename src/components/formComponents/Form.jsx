@@ -286,7 +286,7 @@ export default function PlacesForm() {
                 )}
 
               <hr />
-              <HouseholdIncome />
+              <HouseholdIncome numberOfGuardians={numberOfGuardians} />
               <hr />
               <div className="flex justify-center">
                 <button
