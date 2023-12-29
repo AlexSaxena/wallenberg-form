@@ -12,6 +12,7 @@ const statements = [
   "Vårdbidrag:",
 ];
 
+// eslint-disable-next-line react/prop-types
 const HouseholdIncome = ({ numberOfGuardians }) => {
   const [acceptsMaxFee, setAcceptsMaxFee] = useState(false);
   const [incomeValues, setIncomeValues] = useState(
