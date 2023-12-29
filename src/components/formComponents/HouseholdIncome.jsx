@@ -12,41 +12,34 @@ const statements = [
   "Vårdbidrag:",
 ];
 
-const HouseholdIncome = () => {
+const HouseholdIncome = ({ numberOfGuardians }) => {
   const [acceptsMaxFee, setAcceptsMaxFee] = useState(false);
   const [incomeValues, setIncomeValues] = useState(
     Array(statements.length).fill({ income1: "", income2: "" })
   );
   const [totals, setTotals] = useState({ income1: 0, income2: 0 });
+  const [isIrregularIncome, setIsIrregularIncome] = useState(false);
+  const [irregularIncomeExplanation, setIrregularIncomeExplanation] =
+    useState("");
 
   const handleCheckboxChange = (event) => {
     setAcceptsMaxFee(event.target.checked);
   };
 
   const handleIncomeChange = (index, income, value) => {
-    // Update the individual income values
     const newIncomeValues = [...incomeValues];
     newIncomeValues[index] = { ...newIncomeValues[index], [income]: value };
     setIncomeValues(newIncomeValues);
 
-    // Calculate the totals
     const newTotals = newIncomeValues.reduce(
-      (acc, current) => {
-        return {
-          income1: acc.income1 + (Number(current.income1) || 0),
-          income2: acc.income2 + (Number(current.income2) || 0),
-        };
-      },
+      (acc, current) => ({
+        income1: acc.income1 + (Number(current.income1) || 0),
+        income2: acc.income2 + (Number(current.income2) || 0),
+      }),
       { income1: 0, income2: 0 }
     );
     setTotals(newTotals);
   };
-
-  //  IrregularIncome
-
-  const [isIrregularIncome, setIsIrregularIncome] = useState(false);
-  const [irregularIncomeExplanation, setIrregularIncomeExplanation] =
-    useState("");
 
   const toggleIrregularIncome = () => {
     setIsIrregularIncome(!isIrregularIncome);
@@ -55,8 +48,6 @@ const HouseholdIncome = () => {
   const handleIrregularIncomeChange = (event) => {
     setIrregularIncomeExplanation(event.target.value);
   };
-
-  //---------IrregularIncome END
 
   return (
     <div>
@@ -88,9 +79,11 @@ const HouseholdIncome = () => {
               <th className="font-semibold py-2 text-left">
                 Vårdnadshavare 1 - fakturamottagare
               </th>
-              <th className="font-semibold py-2 text-left">
-                Vårdnadshavare 2 - /Sammanboende
-              </th>
+              {numberOfGuardians === 2 && (
+                <th className="font-semibold py-2 text-left">
+                  Vårdnadshavare 2 - /Sammanboende
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -114,19 +107,21 @@ const HouseholdIncome = () => {
                     />
                   </div>
                 </td>
-                <td className="py-2">
-                  <div className="flex flex-col">
-                    <input
-                      type="number"
-                      className="form-input mt-1 block w-full"
-                      placeholder="SEK"
-                      value={incomeValues[index].income2}
-                      onChange={(e) =>
-                        handleIncomeChange(index, "income2", e.target.value)
-                      }
-                    />
-                  </div>
-                </td>
+                {numberOfGuardians === 2 && (
+                  <td className="py-2">
+                    <div className="flex flex-col">
+                      <input
+                        type="number"
+                        className="form-input mt-1 block w-full"
+                        placeholder="SEK"
+                        value={incomeValues[index].income2}
+                        onChange={(e) =>
+                          handleIncomeChange(index, "income2", e.target.value)
+                        }
+                      />
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
             <tr className="bg-gray-100">
@@ -138,20 +133,20 @@ const HouseholdIncome = () => {
                   </span>
                 </div>
               </td>
-              <td className="py-2">
-                <div className="flex flex-col">
-                  <span className="mt-1 block w-full">
-                    {totals.income2} SEK
-                  </span>
-                </div>
-              </td>
+              {numberOfGuardians === 2 && (
+                <td className="py-2">
+                  <div className="flex flex-col">
+                    <span className="mt-1 block w-full">
+                      {totals.income2} SEK
+                    </span>
+                  </div>
+                </td>
+              )}
             </tr>
           </tbody>
         </table>
       </div>
 
-      {/* ... Lower checkbox with text area  */}
-      <div></div>
       <div className="flex items-center my-4">
         <input
           id="irregularIncomeCheckbox"
@@ -185,7 +180,6 @@ const HouseholdIncome = () => {
           ></textarea>
         </div>
       )}
-      {/* ... Lower checkbox with text area END  */}
     </div>
   );
 };
