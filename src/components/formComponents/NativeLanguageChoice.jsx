@@ -15,7 +15,7 @@ const NativeLanguageChoice = ({
             type="radio"
             name="native_language"
             className="form-radio"
-            value="ja"
+            value="JA"
             checked={showNativeLanguageChoice}
             onChange={() => setShowNativeLanguageChoice(true)}
           />
@@ -26,7 +26,7 @@ const NativeLanguageChoice = ({
             type="radio"
             name="native_language"
             className="form-radio"
-            value="nej"
+            value="NEJ"
             checked={!showNativeLanguageChoice}
             onChange={() => setShowNativeLanguageChoice(false)}
           />

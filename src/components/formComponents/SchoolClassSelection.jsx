@@ -26,11 +26,11 @@ const SchoolClassSelection = ({ onGradeChange }) => {
             <br />
           </>
         );
-      case "1":
-      case "2":
-      case "3":
-      case "4":
-      case "5":
+      case "klass1":
+      case "klass2":
+      case "klass3":
+      case "klass4":
+      case "klass5":
         return (
           <>
             <br />
@@ -40,10 +40,10 @@ const SchoolClassSelection = ({ onGradeChange }) => {
             <br />
           </>
         );
-      case "6":
-      case "7":
-      case "8":
-      case "9":
+      case "klass6":
+      case "klass7":
+      case "klass8":
+      case "klass9":
         return (
           <>
             <br />
@@ -76,15 +76,15 @@ const SchoolClassSelection = ({ onGradeChange }) => {
       >
         <option value="">Välj klass</option>
         <option value="förskoleklass">förskoleklass</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
+        <option value="klass1">1</option>
+        <option value="klass2">2</option>
+        <option value="klass3">3</option>
+        <option value="klass4">4</option>
+        <option value="klass5">5</option>
+        <option value="klass6">6</option>
+        <option value="klass7">7</option>
+        <option value="klass8">8</option>
+        <option value="klass9">9</option>
       </select>
       {renderMessage()}
     </div>
