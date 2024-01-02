@@ -101,6 +101,7 @@ const HouseholdIncome = ({ numberOfGuardians }) => {
                       type="number"
                       className="form-input mt-1 block w-full"
                       placeholder="SEK"
+                      name={`HouseholdGuardian1${statement}`}
                       value={incomeValues[index].income1}
                       onChange={(e) =>
                         handleIncomeChange(index, "income1", e.target.value)
@@ -115,6 +116,7 @@ const HouseholdIncome = ({ numberOfGuardians }) => {
                         type="number"
                         className="form-input mt-1 block w-full"
                         placeholder="SEK"
+                        name={`HouseholdGuardian2${statement}`}
                         value={incomeValues[index].income2}
                         onChange={(e) =>
                           handleIncomeChange(index, "income2", e.target.value)
