@@ -1,10 +1,12 @@
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import BankIDComponent from "../components/BankIDComponent";
 
 const Home = () => {
   return (
     <>
       <Header />
+      <BankIDComponent />
       <div className="mt-8 text-center">
         <h1 className="text-4xl font-bold mb-2">Raoul Wallenbergskolan</h1>
         <p className="text-lg text-gray-600 mb-4">Formulär för elever</p>
