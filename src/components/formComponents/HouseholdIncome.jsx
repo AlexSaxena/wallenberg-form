@@ -16,7 +16,7 @@ const statements = [
 const HouseholdIncome = ({ numberOfGuardians }) => {
   const [acceptsMaxFee, setAcceptsMaxFee] = useState(false);
   const [incomeValues, setIncomeValues] = useState(
-    Array(statements.length).fill({ income1: "", income2: "" })
+    Array(statements.length).fill({ income1: 0, income2: 0 })
   );
   const [totals, setTotals] = useState({ income1: 0, income2: 0 });
   const [isIrregularIncome, setIsIrregularIncome] = useState(false);
