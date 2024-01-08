@@ -52,7 +52,7 @@ export default function PlacesForm() {
     });
 
     // Log Data Sanity check
-    console.table("Form Data:", formData);
+    console.table("Form Data:", formObject);
 
     // TEMP COMMENTED FOR TESTING
     // Send the form data to API using Axios
@@ -72,7 +72,6 @@ export default function PlacesForm() {
       <div className="bg-gray-100">
         <div className="container mx-auto p-8">
           <div className="bg-white shadow rounded-lg p-6">
-            {/* <form action="#" method="POST" className="space-y-4"> */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-700">
